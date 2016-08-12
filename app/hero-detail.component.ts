@@ -6,15 +6,8 @@ import { HeroService } from './hero.service';
 
 @Component({
     selector: 'my-hero-detail',
-    template: `
-    <div *ngIf="hero">
-      <h2>{{hero.name}} details!</h2>
-      <div><label>id: </label>{{hero.id}}</div>
-      <div>
-        <label>name: </label>
-        <input [(ngModel)]="hero.name" placeholder="name"/>
-      </div>
-    </div>`
+    templateUrl: 'app/hero-detail.component.html',
+    styleUrls: ['app/hero-detail.component.css']
 })
 export /**
  * HeroDetailComponent
@@ -24,12 +17,14 @@ class HeroDetailComponent implements OnInit {
     @Input()
     hero: Hero;
     
-      ngOnInit() {
+    ngOnInit() {
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
       this.heroService.getHero(id)
         .then(hero => this.hero = hero);
-    });
+    });    
   }
-
+  goBack() {
+      window.history.back();
+  }
 }

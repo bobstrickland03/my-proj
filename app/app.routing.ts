@@ -19,7 +19,7 @@ const appRoutes: Routes = [
         pathMatch: 'full'
     },
     {
-        path: 'detail/id',
+        path: 'detail/:id',
         component: HeroDetailComponent
     }
 ];
